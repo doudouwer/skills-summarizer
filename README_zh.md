@@ -127,4 +127,4 @@ bash scripts/run_summarize.sh /path/to/log.jsonl 100
 
 ## 许可
 
-技能规范见 [skills_summarize_agent/SKILL.md](skills_summarize_agent/SKILL.md)；本仓库的许可条款可另行添加（如 MIT、Apache-2.0）。
+本仓库采用 **Apache-2.0** 许可证，详见 [LICENSE](LICENSE)。技能规范见 [skills_summarize_agent/SKILL.md](skills_summarize_agent/SKILL.md)。

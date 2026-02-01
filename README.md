@@ -127,4 +127,4 @@ Generated SKILLs are written under the **output root** (default: `output/` at re
 
 ## License
 
-See [skills_summarize_agent/SKILL.md](skills_summarize_agent/SKILL.md) for the skill spec; license terms for this repo can be added separately (e.g. MIT, Apache-2.0).
+This project is licensed under the **Apache-2.0** License — see the [LICENSE](LICENSE) file for details. The skill spec is in [skills_summarize_agent/SKILL.md](skills_summarize_agent/SKILL.md).
