@@ -56,7 +56,7 @@ bash scripts/run_test.sh
 ```
 
 > [!TIP]
-> 建议使用 **GPT-4o**（默认）以获得最佳的模式识别效果。如需更换模型，在 `.env` 中设置 `OPENAI_MODEL`。
+> 建议使用 **GPT-5.2**（默认）以获得最佳的模式识别效果。如需更换模型，在 `.env` 中设置 `OPENAI_MODEL`。
 
 ---
 
@@ -78,7 +78,7 @@ bash scripts/run_test.sh
 
 - `OPENAI_API_KEY`（或 `SKILL_SUMMARIZER_OPENAI_API_KEY`）
 - `OPENAI_BASE_URL`（可选；或 `SKILL_SUMMARIZER_OPENAI_BASE_URL`）
-- `OPENAI_MODEL`（可选，默认 `gpt-4o`；或 `SKILL_SUMMARIZER_OPENAI_MODEL`）
+- `OPENAI_MODEL`（可选，默认 `gpt-5.2`；或 `SKILL_SUMMARIZER_OPENAI_MODEL`）
 
 ---
 

@@ -56,7 +56,7 @@ bash scripts/run_test.sh
 ```
 
 > [!TIP]
-> For best pattern-recognition results, use **GPT-4o** (default). Set `OPENAI_MODEL` in `.env` if needed.
+> For best pattern-recognition results, use **GPT-5.2** (default). Set `OPENAI_MODEL` in `.env` if needed.
 
 ---
 
@@ -78,7 +78,7 @@ Copy `.env.example` to `.env` in the repo root and set your OpenAI-compatible AP
 
 - `OPENAI_API_KEY` (or `SKILL_SUMMARIZER_OPENAI_API_KEY`)
 - `OPENAI_BASE_URL` (optional; or `SKILL_SUMMARIZER_OPENAI_BASE_URL`)
-- `OPENAI_MODEL` (optional; default `gpt-4o`; or `SKILL_SUMMARIZER_OPENAI_MODEL`)
+- `OPENAI_MODEL` (optional; default `gpt-5.2`; or `SKILL_SUMMARIZER_OPENAI_MODEL`)
 
 ---
 

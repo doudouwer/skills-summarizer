@@ -118,7 +118,7 @@ class SkillSummarizerAgent:
         """
         self.project_root = os.path.abspath(project_root)
         self.output_root = os.path.abspath(output_root)
-        self.llm_model = llm_model or OPENAI_CONFIG.get("model", "gpt-4o")
+        self.llm_model = llm_model or OPENAI_CONFIG.get("model", "gpt-5.2")
         self.max_turns = max_turns
 
         if llm_client is not None:

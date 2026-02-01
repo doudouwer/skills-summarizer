@@ -18,7 +18,7 @@ load_dotenv()
 OPENAI_CONFIG = {
     "base_url": os.getenv("SKILL_SUMMARIZER_OPENAI_BASE_URL") or os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1"),
     "api_key": os.getenv("SKILL_SUMMARIZER_OPENAI_API_KEY") or os.getenv("OPENAI_API_KEY", ""),
-    "model": os.getenv("SKILL_SUMMARIZER_OPENAI_MODEL") or os.getenv("OPENAI_MODEL", "gpt-4o"),
+    "model": os.getenv("SKILL_SUMMARIZER_OPENAI_MODEL") or os.getenv("OPENAI_MODEL", "gpt-5.2"),
     "temperature": float(os.getenv("SKILL_SUMMARIZER_TEMPERATURE", "0.3")),
     "max_tokens": int(os.getenv("SKILL_SUMMARIZER_MAX_TOKENS", "4096")),
 }
