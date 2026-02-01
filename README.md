@@ -1,4 +1,4 @@
-# skills_summarize_agent
+# Skills Summarizer
 
 Extract reusable **SKILL.md** files from agent execution logs. Logs are read as text (any file type or extension—e.g. `.jsonl`, `.log`, `.txt`, or none). The agent analyzes log entries (e.g. tool calls, queries, collected results), identifies repeated successful workflows, and writes standard-compliant skills following the [summarizing-new-skills](skills_summarize_agent/SKILL.md) spec (progressive disclosure, kebab-case names, trigger phrases).
 
