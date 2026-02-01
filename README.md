@@ -1,28 +1,76 @@
-# Skills Summarizer
+# 🛠️ Skills Summarizer
+
+<p align="center">
+  <img src="https://img.shields.io/github/license/doudouwer/skills-summarizer?style=flat-square" alt="license">
+  <img src="https://img.shields.io/github/stars/doudouwer/skills-summarizer?style=flat-square" alt="stars">
+  <img src="https://img.shields.io/github/v/release/doudouwer/skills-summarizer?style=flat-square" alt="release">
+  <img src="https://img.shields.io/badge/Python-3.10+-blue?style=flat-square&logo=python" alt="python">
+</p>
+
+> **Evolve your Agent**: Extract, distill, and reuse standardized SKILL assets from messy execution logs.
 
 Extract reusable **SKILL.md** files from agent execution logs. Logs are read as text (any file type or extension—e.g. `.jsonl`, `.log`, `.txt`, or none). The agent analyzes log entries (e.g. tool calls, queries, collected results), identifies repeated successful workflows, and writes standard-compliant skills following the [summarizing-new-skills](skills_summarize_agent/SKILL.md) spec (progressive disclosure, kebab-case names, trigger phrases).
 
-## Project layout
+---
 
-- **`skills_summarize_agent/`** – Python package (SDK, agent, CLI, SKILL spec).
-- **`scripts/`** – Shell entry points: `run_test.sh`, `run_summarize.sh`.
-- **`data/`** – Bundled example log files (see [Bundled examples](#bundled-examples)).
-- **`output/`** – Default directory for generated SKILLs (created on first run).
-- **`.env.example`**, **`requirements.txt`**, **`pyproject.toml`** – Config and install.
+## 📖 Table of Contents
 
-## Install
+- [✨ Key Features](#-key-features)
+- [🚀 Quick Start](#-quick-start)
+- [📁 Project Layout](#-project-layout)
+- [⚙️ Configuration](#️-configuration)
+- [🛠️ Usage](#️-usage)
+- [📊 Log Format](#-log-format)
+- [📦 Bundled Examples](#-bundled-examples)
+- [📤 Output](#-output)
+- [🏗️ Architecture](#️-architecture)
+- [📝 License](#-license)
 
-From the repo root:
+---
+
+## ✨ Key Features
+
+- **Log-agnostic**: Any file type or extension; JSONL, multi-line JSON, or plain text—the LLM infers workflows from your structure.
+- **Standard-compliant**: Outputs follow the [summarizing-new-skills](skills_summarize_agent/SKILL.md) spec (progressive disclosure, kebab-case, trigger phrases).
+- **SDK + CLI + Scripts**: Use from Python (`summarize_skills_from_log`), command line (`run_summarize`), or one-liner shell scripts.
+- **Bundled samples**: Try it immediately with `data/example1` and `data/example2` via `bash scripts/run_test.sh`.
+
+---
+
+## 🚀 Quick Start
 
 ```bash
-pip install -r requirements.txt
-# or editable install for development
+# 1. Clone and install
+git clone https://github.com/doudouwer/skills-summarizer.git
+cd skills-summarizer
 pip install -e .
+
+# 2. Configure API (recommended: use .env)
+cp .env.example .env
+# Edit .env: set OPENAI_API_KEY (and optionally OPENAI_BASE_URL, OPENAI_MODEL)
+
+# 3. Run a quick test with bundled sample
+bash scripts/run_test.sh
 ```
 
-Requirements: `openai>=1.0.0`, `python-dotenv>=1.0.0`.
+> [!TIP]
+> For best pattern-recognition results, use **GPT-4o** (default). Set `OPENAI_MODEL` in `.env` if needed.
 
-## Configuration
+---
+
+## 📁 Project Layout
+
+| Path | Description |
+|------|-------------|
+| **`skills_summarize_agent/`** | Python package (SDK, agent, CLI, SKILL spec). |
+| **`scripts/`** | Shell entry points: `run_test.sh`, `run_summarize.sh`. |
+| **`data/`** | Bundled example log files (see [Bundled examples](#-bundled-examples)). |
+| **`output/`** | Default directory for generated SKILLs (created on first run). |
+| **`.env.example`**, **`requirements.txt`**, **`pyproject.toml`** | Config and install. |
+
+---
+
+## ⚙️ Configuration
 
 Copy `.env.example` to `.env` in the repo root and set your OpenAI-compatible API (or use env vars directly):
 
@@ -30,7 +78,9 @@ Copy `.env.example` to `.env` in the repo root and set your OpenAI-compatible AP
 - `OPENAI_BASE_URL` (optional; or `SKILL_SUMMARIZER_OPENAI_BASE_URL`)
 - `OPENAI_MODEL` (optional; default `gpt-4o`; or `SKILL_SUMMARIZER_OPENAI_MODEL`)
 
-## Usage
+---
+
+## 🛠️ Usage
 
 ### SDK (Python)
 
@@ -101,30 +151,58 @@ bash scripts/run_summarize.sh agent_log
 bash scripts/run_summarize.sh /path/to/log.jsonl 100
 ```
 
-## Log format
+---
+
+## 📊 Log Format
 
 Log files are read as **text** (any filename or extension). Any format that describes agent runs is supported—e.g. one JSON object per line (JSONL), multi-line JSON, or plain text with tool calls and results. The LLM infers repeated workflows from whatever structure you have; common patterns include:
 
 - `query`, `api_call_history` (or `tool_calls`), `collected_info_sources` (or `results`), `iterations_used`, `info_sufficient`, `confidence`
 - Or your own fields that capture “what was tried” and “what succeeded”.
 
-See [Bundled examples](#bundled-examples) for the two sample logs in `data/`.
+See [Bundled examples](#-bundled-examples) for the two sample logs in `data/`.
 
-## Bundled examples
+---
+
+## 📦 Bundled Examples
 
 Two example log files are included in **`data/`**:
 
 | File | Description |
-|------|--------------|
+|------|-------------|
 | **`data/example1`** | Single-line JSONL: one agent run with a natural-language query, `api_call_history` (endpoints and params), and `collected_info_sources`. Good for API/tool-call style logs where each line is one completed run. |
 | **`data/example2`** | Multi-turn conversation log: a task (e.g. “average rating of top N items”) and a `conversation` array of messages (timestamp, sender, content, role). Good for agentic/conversation logs where the workflow is spread across turns. |
 
 Use them to try the tool: e.g. `--log_path data/example1` or `bash scripts/run_summarize.sh data/example2`.
 
-## Output
+---
+
+## 📤 Output
 
 Generated SKILLs are written under the **output root** (default: `output/` at repo root). Each skill is typically a subdirectory with a `SKILL.md` (and optionally `scripts/`, `references/`). Naming follows kebab-case, third-person descriptions, and trigger phrases as in [skills_summarize_agent/SKILL.md](skills_summarize_agent/SKILL.md).
 
-## License
+---
+
+## 🏗️ Architecture
+
+High-level flow: logs → agent → pattern mining → SKILL assets.
+
+```mermaid
+graph LR
+    A[(Execution Logs)] --> B[Skill Summarizer Agent]
+    B --> C{Pattern Mining}
+    C --> D[SKILL.md]
+    C --> E[scripts/]
+```
+
+---
+
+## 🎬 Showcase
+
+*Placeholder: add a terminal GIF of `run_summarize.sh` or a screenshot of generated `SKILL.md` in your editor to make the repo more inviting.*
+
+---
+
+## 📝 License
 
 This project is licensed under the **Apache-2.0** License — see the [LICENSE](LICENSE) file for details. The skill spec is in [skills_summarize_agent/SKILL.md](skills_summarize_agent/SKILL.md).
