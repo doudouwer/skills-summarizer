@@ -1,5 +1,7 @@
 # 🛠️ Skills Summarizer
 
+<p align="right"><strong>🌐 English</strong> | <a href="README_zh.md">中文</a></p>
+
 <p align="center">
   <img src="https://img.shields.io/github/license/doudouwer/skills-summarizer?style=flat-square" alt="license">
   <img src="https://img.shields.io/github/stars/doudouwer/skills-summarizer?style=flat-square" alt="stars">
